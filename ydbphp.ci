@@ -1,0 +1,5 @@
+ydb_get : gtm_char_t *ydbget^ydbphp(I:gtm_char_t *)
+ydb_set : void ydbset^ydbphp(I:gtm_char_t *, I:gtm_char_t *)
+ydb_kill : void ydbkill^ydbphp(I:gtm_char_t *)
+ydb_data : gtm_char_t *ydbdata^ydbphp(I:gtm_char_t *)
+ydb_order : gtm_char_t *ydborder^ydbphp(I:gtm_char_t *, I:gtm_char_t *)

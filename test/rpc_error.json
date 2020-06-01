@@ -1,0 +1,8 @@
+{
+	"jsonrpc" : "2.0",
+	"id" : 384,
+	"error" : {
+		"code" : -32603,
+		"message" : "Something gone wrong."
+	}
+}

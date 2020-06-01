@@ -1,0 +1,11 @@
+{
+	"jsonrpc" : "2.0",
+	"id" : 384,
+	"method" : "YDB_INIT",
+	"params" : [
+		"gtm_dist=/usr/local/lib/yottadb/r128",
+		"gtmgbldir=/home/qwerty/.yottadb/g/yottadb.gld",
+		"ydb_dir=/home/qwerty/.yottadb",
+		"ydb_rel=r1.28_x86_64"
+	]
+}
