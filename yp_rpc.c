@@ -775,13 +775,15 @@ int yp_createrequest(struct yp_request *r, int id,
 {
 	int i;
 
+	r->method = NULL;
+	r->param = NULL;
+	r->paramcount = 0;
+
 	r->id = id;
 	if ((r->method = strdup(method)) == NULL)
 		goto error;
 
 	if (paramcount != 0) {
-		r->paramcount = paramcount;
-
 		if ((r->param = malloc(sizeof(char *)
 			* paramcount)) == NULL) {
 			goto error;
@@ -790,16 +792,23 @@ int yp_createrequest(struct yp_request *r, int id,
 		for (i = 0; i < paramcount; ++i) {
 			if ((r->param[i] = strdup(params[i])) == NULL)
 				goto error;
+			
+			++(r->paramcount);
 		}
-	}
-	else {
-		r->paramcount = 0;
-		r->param = NULL;
 	}
 
 	return 0;
 
 error:
+	if (r->method != NULL)
+		free(r->method);
+	
+	if (r->param != NULL)
+		free(r->param);
+
+	for (i = 0; i < r->paramcount; ++i)
+		free(r->param[i]);
+
 	errcode = YP_ERR_JRALLOC;
 	yp_seterrmessage("Cannot allocate memory.");
 	return (-1);

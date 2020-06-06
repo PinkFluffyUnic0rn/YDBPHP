@@ -1,0 +1,22 @@
+.PS
+box width 4.5 height 0.25
+sprintf("id: 1") ljust at last box.w + (0.125, 0.0)
+
+box width 4.5 height 0.25 with .nw at last box.sw
+sprintf("method: YDB_INIT") ljust at last box.w + (0.125, 0.0)
+
+box width 4.5 height 0.25 with .nw at last box.sw
+sprintf("paramcount: 4") ljust at last box.w + (0.125, 0.0)
+
+box width 4.5 height 0.25 with .nw at last box.sw
+sprintf("param[0]: \"gtm_dist=/usr/local/lib/yottadb/r128\"") ljust at last box.w + (0.125, 0.0)
+
+box width 4.5 height 0.25 with .nw at last box.sw
+sprintf("param[1]: \"gtmgbldir=/home/qwerty/.yottadb/g/yottadb.gld\"") ljust at last box.w + (0.125, 0.0)
+
+box  width 4.5 height 0.25 with .nw at last box.sw
+sprintf("param[2]: \"ydb_dir=/home/qwerty/.yottadb\"") ljust at last box.w + (0.125, 0.0)
+
+box  width 4.5 height 0.25 with .nw at last box.sw
+sprintf("param[3]: \"ydb_rel=r1.28_x86_64\"") ljust at last box.w + (0.125, 0.0)
+.PE

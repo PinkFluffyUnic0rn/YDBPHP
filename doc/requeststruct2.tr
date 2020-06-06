@@ -1,0 +1,16 @@
+.PS
+box width 5.0 height 0.25
+sprintf("id: 2") ljust at last box.w + (0.125, 0.0)
+
+box width 5.0 height 0.25 with .nw at last box.sw
+sprintf("method: YDB_SET") ljust at last box.w + (0.125, 0.0)
+
+box width 5.0 height 0.25 with .nw at last box.sw
+sprintf("paramcount: 2") ljust at last box.w + (0.125, 0.0)
+
+box width 5.0 height 0.25 with .nw at last box.sw
+sprintf("param[0]: \"^person(\\\"Komi Republic\\\",\\\"Syktyvkar\\\",1,\\\"Name\\\")\"") ljust at last box.w + (0.125, 0.0)
+
+box width 5.0 height 0.25 with .nw at last box.sw
+sprintf("param[1]: \"Ivan\"") ljust at last box.w + (0.125, 0.0)
+.PE

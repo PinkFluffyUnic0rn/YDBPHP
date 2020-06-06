@@ -1,0 +1,13 @@
+.PS
+box width 1.75 height 0.25
+sprintf("id: 1") ljust at last box.w + (0.125, 0.0)
+
+box width 1.75 height 0.25 with .nw at last box.sw
+sprintf("result: \"\"") ljust at last box.w + (0.125, 0.0)
+
+box width 1.75 height 0.25 with .nw at last box.sw
+sprintf("errcode: undefined") ljust at last box.w + (0.125, 0.0)
+
+box width 1.75 height 0.25 with .nw at last box.sw
+sprintf("errmessage: undefined") ljust at last box.w + (0.125, 0.0)
+.PE

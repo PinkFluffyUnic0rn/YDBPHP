@@ -1,0 +1,13 @@
+.PS
+box width 5.0
+sprintf("id: 2") ljust at last box.w + (0.25, 0.0)
+
+box width 5.0 with .nw at last box.sw
+sprintf("method: YDB_GET") ljust at last box.w + (0.25, 0.0)
+
+box width 5.0 with .nw at last box.sw
+sprintf("paramcount: 1") ljust at last box.w + (0.25, 0.0)
+
+box width 5.0 with .nw at last box.sw
+sprintf("param[0]: \"^person(\\\"Komi Republic\\\",\\\"Syktyvkar\\\",1,\\\"surname\\\")\"") ljust at last box.w + (0.25, 0.0)
+.PE

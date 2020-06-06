@@ -1,0 +1,15 @@
+.PS
+box width 5.0 height 0.25
+sprintf("id: 4") ljust at last box.w + (0.25, 0.0)
+
+box width 5.0 height 0.25 with .nw at last box.sw
+sprintf("result: NULL") ljust at last box.w + (0.25, 0.0)
+
+box width 5.0 height 0.25 with .nw at last box.sw
+sprintf("errcode: 150372994") ljust at last box.w + (0.25, 0.0)
+
+box width 5.0 height 0.65 with .nw at last box.sw
+sprintf("errmessage: \"150372994,ydbget+1^ydbphp,%YDB-E-GVUNDEF,") ljust at last box.w + (0.25, 0.17)
+sprintf("Global variable undefined:") ljust at last box.w + (0.25, 0.0) ljust at last box.w + (0.5, 0.0)
+sprintf("^person(\\\"Komi Republic\\\",\\\"Syktyvkar\\\",1,\\\"surname\\\")\"") ljust at last box.w + (0.5, -0.17)
+.PE

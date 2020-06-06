@@ -1,0 +1,13 @@
+.PS 
+B1: box "PHP"
+move right 1.0
+B2: box "coprocess"
+move right 1.0
+B3: box "procedure"
+
+line -> "request" above from 1/5 <B1.ne, B1.se> to 1/5 <B2.nw, B2.sw>
+line <- "response" below from 4/5 <B1.ne, B1.se> to 4/5 <B2.nw, B2.sw>
+
+line -> "arguments" above from 1/5 <B2.ne, B2.se> to 1/5 <B3.nw, B3.sw>
+line <- "return value" below from 4/5 <B2.ne, B2.se> to 4/5 <B3.nw, B3.sw>
+.PE
