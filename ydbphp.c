@@ -17,6 +17,7 @@
 PHP_MINIT_FUNCTION(minit);
 PHP_RINIT_FUNCTION(rinit);
 PHP_RSHUTDOWN_FUNCTION(rshutdown);
+PHP_MSHUTDOWN_FUNCTION(mshutdown);
 PHP_FUNCTION(ydb_init);
 PHP_FUNCTION(ydb_finilize);
 PHP_FUNCTION(ydb_set);
@@ -60,7 +61,7 @@ zend_module_entry ydbphp_module_entry = {
 	PHP_YDBPHP_EXTNAME,
 	ydbphp_functions,
 	PHP_MINIT(minit),
-	NULL,
+	PHP_MSHUTDOWN(mshutdown),
 	PHP_RINIT(rinit),
 	PHP_RSHUTDOWN(rshutdown),
 	NULL,
@@ -72,8 +73,14 @@ zend_module_entry ydbphp_module_entry = {
 
 ZEND_GET_MODULE(ydbphp)
 
+PHP_INI_BEGIN()
+PHP_INI_ENTRY("ydbphp.routinepath", NULL, PHP_INI_SYSTEM, NULL)
+PHP_INI_END()
+
 PHP_MINIT_FUNCTION(minit)
 {
+	REGISTER_INI_ENTRIES();
+
 	REGISTER_LONG_CONSTANT("YDB_SEVERITY_ERROR",
 		YDB_SEVERITY_ERROR, CONST_CS | CONST_PERSISTENT);
 	REGISTER_LONG_CONSTANT("YDB_SEVERITY_FATAL",
@@ -99,6 +106,11 @@ PHP_RSHUTDOWN_FUNCTION(rshutdown)
 		return FAILURE;
 
 	return SUCCESS;
+}
+
+PHP_MSHUTDOWN_FUNCTION(mshutdown)
+{
+	UNREGISTER_INI_ENTRIES();
 }
 
 static int yp_mvarpathadd(struct yp_dstring *s, const zval *v)
@@ -252,7 +264,13 @@ PHP_FUNCTION(ydb_init)
 		env[i] = vargs[i].value.str->val;
 	}
 
-	if (yp_coprocinit(env, vargscount, "/home/evgeniy/ydbphp") < 0)
+	if (INI_STR("ydbphp.routinepath") == NULL) {
+		yp_seterror(YDB_ERR_CONFIG,
+			"No routines path found in .ini files.");
+		goto configerror;
+	}
+
+	if (yp_coprocinit(env, vargscount, INI_STR("ydbphp.routinepath")) < 0)
 		goto coprocerror;
 
 	if (env != NULL)
@@ -261,6 +279,7 @@ PHP_FUNCTION(ydb_init)
 	RETURN_BOOL(1);
 
 coprocerror:
+configerror:
 vargserror:
 envallocerror:
 	if (env != NULL)
