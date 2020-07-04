@@ -17,3 +17,5 @@ mdroff -Tps -p responsestruct4.tr | ps2eps >responsestruct4.eps
 mdroff -Tps -p responsestruct5.tr | ps2eps >responsestruct5.eps
 
 mdroff -Tpdf -e -t -p implementation.tr >implementation.pdf
+
+rm *.eps
